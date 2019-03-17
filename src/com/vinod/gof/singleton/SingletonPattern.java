@@ -3,19 +3,19 @@ package com.vinod.gof.singleton;
 public class SingletonPattern {
 
     //Eager initialization
-    private static SingletonPattern singletonPattern = new SingletonPattern();
+    private static SingletonPattern singletonPattern;
 
-    static{
-        singletonPattern = new SingletonPattern();
-    }
-    private SingletonPattern(){
+    private SingletonPattern() {
     }
 
     //Lasy initialization
-    public static synchronized SingletonPattern getInstance(){
-/*        if(null == singletonPattern){
-            singletonPattern = new SingletonPattern();
-        }*/
+    //Thread Safe Singleton class
+    public static SingletonPattern getInstance() {
+        synchronized (SingletonPattern.class) {
+            if (null == singletonPattern) {
+                singletonPattern = new SingletonPattern();
+            }
+        }
         return singletonPattern;
     }
 
