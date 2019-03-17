@@ -1,6 +1,8 @@
 package com.vinod.gof.singleton;
 
-public class SingletonPattern {
+import java.io.Serializable;
+
+public class SingletonPattern implements Serializable {
 
     //Eager initialization
     private static volatile SingletonPattern singletonPattern;
@@ -21,5 +23,8 @@ public class SingletonPattern {
         return singletonPattern;
     }
 
+    private Object readResolve(){
+        return singletonPattern;
+    }
 
 }

@@ -1,7 +1,9 @@
 package com.vinod.gof.singleton;
 
+import java.io.*;
+
 public class TestSingletonPattern {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Runnable runnable1 = () -> {
             System.out.println("Thread 1 is running");
             SingletonPattern singletonPattern3 = SingletonPattern.getInstance();
@@ -37,6 +39,14 @@ public class TestSingletonPattern {
         System.out.println(System.identityHashCode(singletonPattern1));
         System.out.println(System.identityHashCode(singletonPattern2));
 
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("C:\\vinod\\projects\\serilized-object.ser")));
+        objectOutputStream.writeObject(singletonPattern1);
+
+        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(new File("C:\\vinod\\projects\\serilized-object.ser")));
+        SingletonPattern singletonPattern = null;
+        singletonPattern = (SingletonPattern) objectInputStream.readObject();
+
+        System.out.println("Check serialized result: "+(singletonPattern1 == singletonPattern));
 
     }
 }
