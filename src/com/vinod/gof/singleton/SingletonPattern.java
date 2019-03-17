@@ -2,7 +2,7 @@ package com.vinod.gof.singleton;
 
 import java.io.Serializable;
 
-public class SingletonPattern implements Serializable {
+public class SingletonPattern implements Serializable, Cloneable {
 
     //Eager initialization
     private static volatile SingletonPattern singletonPattern;
@@ -25,6 +25,11 @@ public class SingletonPattern implements Serializable {
 
     private Object readResolve(){
         return singletonPattern;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
     }
 
 }
