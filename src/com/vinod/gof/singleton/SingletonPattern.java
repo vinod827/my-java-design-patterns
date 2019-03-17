@@ -7,7 +7,7 @@ public class SingletonPattern {
     }
 
     //Lasy initialization
-    public static SingletonPattern getInstance(){
+    public static synchronized SingletonPattern getInstance(){
         if(null == singletonPattern){
             singletonPattern = new SingletonPattern();
         }
