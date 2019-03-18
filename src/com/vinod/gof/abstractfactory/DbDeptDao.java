@@ -1,4 +1,4 @@
-package com.vinod.gof.com.vinod.gof.abstractfactory;
+package com.vinod.gof.abstractfactory;
 
 public class DbDeptDao implements Dao {
     @Override
